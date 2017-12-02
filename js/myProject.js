@@ -24,8 +24,12 @@ function fetch_new_sentence(next_description) {
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('load',function(){
         // JSON を JavaScript で使えるようにする
-        var sentence = JSON.parse(xhr.responseText);
-        $(".myArea").append(next_description + sentence.suggestion.join(' / ')+"<br>");
+        //取ってきた結果の中から文章を1つ選ぶ
+        var sentence = JSON.parse(xhr.responseText).suggestion;
+        sentence = sentence[Math.floor(Math.random() * sentence.length)];
+
+        $(".myArea").append(next_description + sentence +"<br>");
+        $("#description").val("");
     });
 
     //APIから読み込む
