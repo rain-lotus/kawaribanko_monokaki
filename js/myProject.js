@@ -11,7 +11,7 @@ function request_path(previous_description) {
 var button = document.getElementById("button");
 button.addEventListener("click", function(){
     //APIに入れるテキストの値
-    var next_sentence = "馬";
+    var next_sentence = $("#description").val();
     if(next_sentence === ''){
         //あとで文末に。がなければ勝手に。をつけるようにする
         return;
@@ -25,7 +25,7 @@ function fetch_new_sentence(next_description) {
     xhr.addEventListener('load',function(){
         // JSON を JavaScript で使えるようにする
         var sentence = JSON.parse(xhr.responseText);
-        $(".myArea").append(sentence.suggestion.join(' / ')+"<br>");
+        $(".myArea").append(next_description + sentence.suggestion.join(' / ')+"<br>");
     });
 
     //APIから読み込む
