@@ -8,21 +8,25 @@ function request_path(key_word) {
     return path;
 }
 
-// XMLHttpRequest
-var xhr = new XMLHttpRequest();
+var button = document.getElementById("button");
+button.addEventListener("click", function(){
+    var next_sentence = "馬";
+    if(next_sentence === ''){
+        return;
+    }
+    fetch_new_sentence(next_sentence);
+});
 
-window.addEventListener('DOMContentLoaded', function () {
-    document.getElementById("button").addEventListener("click", function () {
-        xhr.open("GET", request_path("馬"), true);
-        xhr.send();
+function fetch_new_sentence(next) {
+    // XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+    xhr.addEventListener('load',function(){
+        // JSON を JavaScript で使えるようにする
+        var sentence = JSON.parse(xhr.responseText);
+        $(".myArea").append(sentence.suggestion.join(' / ')+"<br>");
+    });
 
-        //読み込んだあとの処理
-        xhr.addEventListener("load", function () {
-            var Area = document.querySelector('.myArea');
-            //JSONをJSでつかえるように
-            var sentence = JSON.parse(xhr.responseText);
-            Area.textContent = sentence.suggestion.join(' / ');
-        });
-    }, false);
-}, false);
+    xhr.open("GET", request_path(next), true);
+    xhr.send();
+}
 
