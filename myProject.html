@@ -5,20 +5,30 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>myProject</title>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/myProject.css">
 </head>
 <body>
 
-<div>
-    <span class="myArea"></span>
+<div id="main">
+    <h1>かわりばんこものかき</h1>
+    <div class="topDescription">
+        文章を入力するとそれに続く文章が返ってくるよ<br>
+        うまくつなげて物語を完成させよう<br>
+        最後はめでたしめでたしで終わらせよう<br><br>
+        ヒント：文章の最後に「。」を付けずに送信すると「。」だけが返ってくるよ
+    </div>
+
+    <div>
+        <span class="myArea"></span>
+    </div>
+
+    <input type="text" id="description" placeholder="文章を入力してね">
+    <input type="button" id="button" value="入力"><br>
+    <input type="button" id="end" value="めでたしめでたし">
+
+    <script src="js/myProject.js"></script>
 </div>
-
-<input type="text" id="description" placeholder="文章を入力してね">
-<input type="button" id="button" value="入力"><br>
-<input type="button" id="end" value="めでたしめでたし">
-
-<script src="js/myProject.js"></script>
 </body>
 </html>

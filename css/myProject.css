@@ -1,0 +1,71 @@
+body {
+    font-family: "游ゴシック Medium", YuGothic, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    background-color: #FFF;
+    color: #39393A;
+}
+
+#main {
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 800px;
+}
+
+p{
+    color: #39393A;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+}
+
+input[type="text"] {
+    width: 84%;
+    height: 35px;
+    border-radius: 10px;
+    padding: 0 0 0 10px;
+    border: solid 1px #E6E6E6;
+    margin: 0 0 0 1%;
+}
+
+input:focus {
+     outline: 0;
+     border:solid 1px #FF8552;
+}
+
+input[type="button"]{
+    border: none;
+    background-color: #E6E6E6;
+    padding: 8px 18px 8px 18px;
+    margin: 1%;
+    border-radius: 5px;
+    color: #39393A;
+    width: 10%;
+
+    transition: all 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750); /* linear */
+}
+
+input[type="button"]:hover{
+    background-color: #FF8552;
+}
+
+#end{
+    width: 98%;
+}
+
+.your_text {
+    background-color: #85FFC7;
+    margin: 10px 30px 10px 10px;
+}
+
+.apis_text {
+    background-color: #E6E6E6;
+    margin: 10px 10px 10px 30px;
+}
+
+.end {
+    background-color: #FF8552;
+    margin: 10px;
+}
+
+.topDescription{
+    margin-bottom: 1.34em;
+}
