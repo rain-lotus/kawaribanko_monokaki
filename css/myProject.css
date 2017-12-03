@@ -28,7 +28,7 @@ input[type="text"] {
 
 input:focus {
      outline: 0;
-     border:solid 1px #297373;
+     border:solid 1px #FF8552;
 }
 
 input[type="button"]{
