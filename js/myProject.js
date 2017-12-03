@@ -28,7 +28,7 @@ $("#button").click(function () {
 
 //めでたしめでたしを挿入
 $("#end").click(function () {
-    $(".myArea").append("めでたしめでたし。<br>");
+    $(".myArea").append("<p class='end'>めでたしめでたし。</p>");
 })
 
 //文をAPIから取ってくる
@@ -53,8 +53,8 @@ function fetch_new_sentence(next_description) {
 function next_sentence(sentence,next_description) {
     //取ってきた結果の中から文章を1つ選ぶ
     var result = sentence[Math.floor(Math.random() * sentence.length)];
-    if (result === "。") return next_description + result + "<br>";
-    else return next_description + "<br>" + result + "<br>";
+    if (result === "。") return "<p class='your_text'>"+ next_description + result + "</p>";
+    else return "<p class='your_text'>" + next_description + "</p><p class='apis_text'>" + result + "</p>";
 }
 
 
