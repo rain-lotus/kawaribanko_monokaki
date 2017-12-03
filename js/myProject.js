@@ -8,27 +8,39 @@ function request_path(previous_description) {
     return path;
 }
 
-var button = document.getElementById("button");
-button.addEventListener("click", function(){
+//テキストフィールドに描き終わったら実行
+$("#description").keyup(function (event) {
+    if (event.keyCode === 13) {
+        $("#button").click();
+    }
+});
+
+//ボタンを押したら発火させる
+$("#button").click(function () {
     //APIに入れるテキストの値
     var next_sentence = $("#description").val();
-    if(next_sentence === ''){
+    if (next_sentence === '') {
         //あとで文末に。がなければ勝手に。をつけるようにする
         return;
     }
     fetch_new_sentence(next_sentence);
 });
 
+//めでたしめでたしを挿入
+$("#end").click(function () {
+    $(".myArea").append("めでたしめでたし。<br>");
+})
+
+//文をAPIから取ってくる
 function fetch_new_sentence(next_description) {
     // XMLHttpRequest
     var xhr = new XMLHttpRequest();
-    xhr.addEventListener('load',function(){
+    xhr.addEventListener('load', function () {
         // JSON を JavaScript で使えるようにする
-        //取ってきた結果の中から文章を1つ選ぶ
         var sentence = JSON.parse(xhr.responseText).suggestion;
-        sentence = sentence[Math.floor(Math.random() * sentence.length)];
 
-        $(".myArea").append(next_description + sentence +"<br>");
+        $(".myArea").append(next_sentence(sentence,next_description));
+        //テキストボックスの中をリセットする
         $("#description").val("");
     });
 
@@ -36,4 +48,13 @@ function fetch_new_sentence(next_description) {
     xhr.open("GET", request_path(next_description), true);
     xhr.send();
 }
+
+//返ってきた結果に合わせて入力する文章を変更
+function next_sentence(sentence,next_description) {
+    //取ってきた結果の中から文章を1つ選ぶ
+    var result = sentence[Math.floor(Math.random() * sentence.length)];
+    if (result === "。") return next_description + result + "<br>";
+    else return next_description + "<br>" + result + "<br>";
+}
+
 
